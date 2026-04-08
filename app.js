@@ -1,6 +1,6 @@
 /* ================================================
    ELLOCHARLIE — App JavaScript
-   Dark mode, scroll reveals, FAQ, mobile nav, header scroll
+   Dark mode, scroll reveals, FAQ, mobile nav, header
    ================================================ */
 
 (function () {
@@ -31,16 +31,13 @@
 
   /* ---- HEADER SCROLL STATE ---- */
   const header = document.getElementById('site-header');
-  let lastScroll = 0;
 
   window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    if (y > 10) {
+    if (window.scrollY > 10) {
       header.classList.add('site-header--scrolled');
     } else {
       header.classList.remove('site-header--scrolled');
     }
-    lastScroll = y;
   }, { passive: true });
 
   /* ---- MOBILE NAV ---- */
@@ -56,7 +53,6 @@
         : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
     });
 
-    // Close mobile nav when clicking a link
     mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         mobileNav.classList.remove('is-open');
@@ -78,17 +74,16 @@
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px'
+      threshold: 0.08,
+      rootMargin: '0px 0px -30px 0px'
     });
 
     revealElements.forEach(el => observer.observe(el));
   } else {
-    // Fallback: show everything
     revealElements.forEach(el => el.classList.add('is-visible'));
   }
 
-  /* ---- FAQ ACCORDION ---- */
+  /* ---- FAQ ACCORDION (smooth height) ---- */
   document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
