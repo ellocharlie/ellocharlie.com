@@ -26,6 +26,7 @@ body {
   font-size: var(--text-base);
   color: var(--color-text);
   background-color: var(--color-bg);
+  overflow-x: hidden;
 }
 
 img,
@@ -37,12 +38,10 @@ svg {
   max-width: 100%;
   height: auto;
 }
-
 ul[role='list'],
 ol[role='list'] {
   list-style: none;
 }
-
 input,
 button,
 textarea,
@@ -51,18 +50,17 @@ select {
   color: inherit;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,h2,h3,h4,h5,h6 {
   text-wrap: balance;
   line-height: 1.15;
 }
-
-p, li, figcaption {
+p,li,figcaption {
   text-wrap: pretty;
   max-width: 72ch;
 }
 
 ::selection {
-  background: oklch(from var(--color-primary) l c h / 0.25);
+  background: oklch(from var(--color-primary) l c h / 0.2);
   color: var(--color-text);
 }
 
@@ -73,9 +71,7 @@ p, li, figcaption {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *,*::before,*::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -88,19 +84,12 @@ button {
   background: none;
   border: none;
 }
-
 table {
   border-collapse: collapse;
   width: 100%;
 }
 
-a,
-button,
-[role='button'],
-[role='link'],
-input,
-textarea,
-select {
+a,button,[role='button'],[role='link'],input,textarea,select {
   transition:
     color var(--transition-interactive),
     background var(--transition-interactive),
@@ -115,7 +104,7 @@ select {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip: rect(0,0,0,0);
   white-space: nowrap;
   border-width: 0;
 }

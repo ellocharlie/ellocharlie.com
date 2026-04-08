@@ -3,538 +3,847 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ellocharlie — The CRM built for startups</title>
-  <meta name="description" content="One connected system for your entire customer journey. CRM, helpdesk, onboarding, docs, and more — simple enough to start using today.">
+  <title>ellocharlie — CRM Built for Startups</title>
+  <meta name="description" content="One connected system for your entire customer journey. CRM, sales, support, and onboarding — built for startups that need to move fast.">
+  <meta property="og:title" content="ellocharlie — CRM Built for Startups">
+  <meta property="og:description" content="Stop losing customers to broken processes. One connected system for your entire customer journey.">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="ellocharlie — The CRM built for startups">
-  <meta property="og:description" content="One connected system for your entire customer journey. Simple enough to start using today.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ellocharlie.com">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
-
-  <!-- Fonts: General Sans (display) + Inter (body) -->
+  <!-- Fonts -->
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;550;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 
   <!-- Styles -->
   <link rel="stylesheet" href="./base.css">
   <link rel="stylesheet" href="./style.css">
+
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 
-  <!-- ============ HEADER ============ -->
-  <header class="site-header" id="site-header">
-    <div class="header-inner">
-      <a href="#" class="logo" aria-label="ellocharlie home">
-        <svg class="logo-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <rect x="2" y="2" width="28" height="28" rx="8" stroke="currentColor" stroke-width="2.5"/>
-          <path d="M9 12.5h6.5M9 16h10M9 19.5h6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="22" cy="16" r="3.5" stroke="currentColor" stroke-width="2"/>
+  <!-- Cursor glow effect -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Skip link -->
+  <a href="#main" class="sr-only">Skip to content</a>
+
+  <!-- ═══════════ NAVIGATION ═══════════ -->
+  <nav class="nav" id="mainNav">
+    <div class="nav__inner">
+      <a href="#home" class="nav__logo" aria-label="ellocharlie home">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="currentColor" opacity="0.1"/>
+          <path d="M8 16C8 11.6 11.6 8 16 8s8 3.6 8 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M12 16c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="1.5" fill="currentColor"/>
+          <path d="M16 18v6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
         </svg>
-        <span class="logo-text">ellocharlie</span>
+        ellocharlie
       </a>
 
-      <nav class="nav-desktop" aria-label="Main navigation">
-        <a href="#features">Features</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="#pricing">Pricing</a>
-      </nav>
+      <ul class="nav__links" role="list">
+        <li><a href="#home" data-page="home">Home</a></li>
+        <li><a href="#features" data-page="features">Features</a></li>
+        <li><a href="#integrations" data-page="integrations">Integrations</a></li>
+        <li><a href="#about" data-page="about">About</a></li>
+        <li><a href="#pricing" data-page="pricing">Pricing</a></li>
+      </ul>
 
-      <div class="header-actions">
-        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <div class="nav__actions">
+        <button class="nav__theme-toggle" data-theme-toggle aria-label="Switch theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <a href="https://app.ellocharlie.com/login" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm header-login">Log in</a>
-        <a href="https://app.ellocharlie.com/register" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm header-cta">Get Started</a>
-        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <a href="https://app.ellocharlie.com" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--nav" style="padding: var(--space-2) var(--space-4); font-size: var(--text-xs);">Start Free Trial</a>
+        <button class="nav__mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Mobile Nav -->
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-      <a href="#features">Features</a>
-      <a href="#how-it-works">How it works</a>
-      <a href="#pricing">Pricing</a>
-      <a href="https://app.ellocharlie.com/login" target="_blank" rel="noopener noreferrer">Log in</a>
-      <a href="https://app.ellocharlie.com/register" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="margin-top: var(--space-4);">Get Started Free</a>
-    </nav>
-  </header>
-
-  <main>
-    <!-- ============ HERO ============ -->
-    <section class="hero" id="hero">
-      <div class="container hero-inner">
-        <div class="hero-badge reveal">
-          <span class="badge-dot"></span>
-          Now in Public Beta
-        </div>
-        <h1 class="reveal">One system for your<br>entire customer journey</h1>
-        <p class="hero-sub reveal">Stop losing customers to disconnected tools. ellocharlie connects your CRM, helpdesk, onboarding, and docs in one place — so your team can focus on relationships, not admin.</p>
-        <div class="hero-actions reveal">
-          <a href="https://app.ellocharlie.com/register" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Start Free Trial</a>
-          <a href="#features" class="btn btn--ghost btn--lg">See How It Works
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-          </a>
-        </div>
-        <p class="hero-note reveal">Free 7-day trial. No credit card required.</p>
+    <!-- Mobile menu -->
+    <div class="nav__mobile-menu" id="mobileMenu">
+      <a href="#home" data-page="home">Home</a>
+      <a href="#features" data-page="features">Features</a>
+      <a href="#integrations" data-page="integrations">Integrations</a>
+      <a href="#about" data-page="about">About</a>
+      <a href="#pricing" data-page="pricing">Pricing</a>
+      <div style="margin-top: var(--space-4);">
+        <a href="https://app.ellocharlie.com" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg" style="width:100%">Start Free Trial</a>
       </div>
-    </section>
+    </div>
+  </nav>
 
-    <!-- ============ LOGO WALL ============ -->
-    <section class="logo-wall">
-      <div class="container">
-        <p class="logo-wall-label">Built for startups replacing disconnected tools</p>
-        <div class="logo-wall-grid">
-          <div class="logo-wall-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            <span>Replaces Intercom</span>
-          </div>
-          <div class="logo-wall-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            <span>Replaces HubSpot</span>
-          </div>
-          <div class="logo-wall-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            <span>Replaces Asana</span>
-          </div>
-          <div class="logo-wall-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-            <span>Replaces Notion Docs</span>
-          </div>
-          <div class="logo-wall-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            <span>Replaces Statuspage</span>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- ═══════════ MAIN CONTENT ═══════════ -->
+  <main id="main">
 
-    <!-- ============ PROBLEM ============ -->
-    <section class="problem section" id="problem">
-      <div class="container">
-        <div class="problem-layout">
-          <div class="problem-left reveal">
-            <p class="section-label">The problem</p>
-            <h2 class="section-title">Your tools don't talk to each other</h2>
-            <p class="problem-text">It's 2AM and your biggest customer is threatening to churn. The full story is scattered across your CRM, support tickets, Slack threads, and someone's Google doc.</p>
-          </div>
-          <div class="problem-right">
-            <div class="problem-card reveal">
-              <div class="problem-num">01</div>
-              <p>Your CRM goes dark after the sale. No one knows what happens next.</p>
-            </div>
-            <div class="problem-card reveal">
-              <div class="problem-num">02</div>
-              <p>Your helpdesk only catches fires. It doesn't prevent them.</p>
-            </div>
-            <div class="problem-card reveal">
-              <div class="problem-num">03</div>
-              <p>Your project tool doesn't connect to any of it. Teams copy data half the day.</p>
-            </div>
-            <div class="problem-card problem-card--accent reveal">
-              <div class="problem-num">04</div>
-              <p>This is how churn happens. ellocharlie helps solve this.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- ═══════════════════════════════════════
+         PAGE: HOME
+         ═══════════════════════════════════════ -->
+    <div class="page active" id="page-home" data-page="home">
 
-    <!-- ============ FEATURES BENTO ============ -->
-    <section class="section features-section" id="features">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-label reveal">Features</p>
-          <h2 class="section-title reveal">Everything you need,<br>nothing you don't</h2>
-          <p class="section-subtitle reveal">One platform replaces your CRM, helpdesk, project tracker, docs portal, and status page.</p>
-        </div>
-
-        <div class="bento-grid">
-          <!-- Large card: CRM & Sales -->
-          <div class="bento-card bento-card--lg reveal">
-            <div class="bento-card-content">
-              <div class="bento-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <!-- Hero -->
+      <section class="section section--hero">
+        <div class="container">
+          <div class="hero">
+            <div class="hero__content">
+              <div class="hero__badge">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l2.1 4.3L15 6l-3.5 3.4.8 4.9L8 12.1 3.7 14.3l.8-4.9L1 6l4.9-.7z"/></svg>
+                Built for startups · 7-day free trial
               </div>
-              <h3>CRM & Sales Pipeline</h3>
-              <p>Capture, qualify, and manage leads from any source. Track deals across multiple pipelines with custom stages, smart notifications, and automations.</p>
+              <h1 class="hero__title">
+                One system for your<br>
+                entire <span class="highlight">customer journey</span>
+              </h1>
+              <p class="hero__subtitle">
+                CRM, sales pipelines, helpdesk, live chat, onboarding, and feedback — all connected. Stop losing customers to broken processes.
+              </p>
+              <div class="hero__actions">
+                <a href="https://app.ellocharlie.com" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
+                  Start Free Trial
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10m-4-4l4 4-4 4"/></svg>
+                </a>
+                <a href="#features" class="btn btn--secondary btn--lg" data-page="features">
+                  See Features
+                </a>
+              </div>
+              <div class="hero__proof" data-stagger>
+                <div class="hero__proof-stat">
+                  <strong data-counter="24">24+</strong>
+                  <span>Built-in tools</span>
+                </div>
+                <div class="hero__proof-stat">
+                  <strong>$55</strong>
+                  <span>/seat per month</span>
+                </div>
+                <div class="hero__proof-stat">
+                  <strong>7 day</strong>
+                  <span>Free trial</span>
+                </div>
+              </div>
             </div>
-            <div class="bento-card-visual">
-              <div class="pipeline-visual">
-                <div class="pipeline-col">
-                  <span class="pipeline-label">Lead</span>
-                  <div class="pipeline-dot pipeline-dot--1"></div>
-                  <div class="pipeline-dot pipeline-dot--2"></div>
+
+            <!-- Product visual -->
+            <div class="hero__visual fade-in">
+              <div class="hero__product-frame">
+                <div class="hero__product-dots">
+                  <span></span><span></span><span></span>
                 </div>
-                <div class="pipeline-col">
-                  <span class="pipeline-label">Qualified</span>
-                  <div class="pipeline-dot pipeline-dot--3"></div>
+                <img src="https://framerusercontent.com/images/nLispxFGzePmMvCOJmh5EW7iJFM.png?width=1200&height=884" alt="ellocharlie CRM dashboard showing sales pipeline and customer management" width="1200" height="884" loading="eager" decoding="async">
+              </div>
+
+              <!-- Floating cards -->
+              <div class="hero__float hero__float--left glass-card" style="animation: float 6s ease-in-out infinite;">
+                <div class="hero__float-label">Pipeline Health</div>
+                <div class="hero__float-value">$127K</div>
+                <div class="hero__float-bar">
+                  <div class="hero__float-bar-fill" data-width="78" style="background: var(--color-primary);"></div>
                 </div>
-                <div class="pipeline-col">
-                  <span class="pipeline-label">Proposal</span>
-                  <div class="pipeline-dot pipeline-dot--4"></div>
-                  <div class="pipeline-dot pipeline-dot--5"></div>
-                </div>
-                <div class="pipeline-col pipeline-col--active">
-                  <span class="pipeline-label">Won</span>
-                  <div class="pipeline-dot pipeline-dot--6"></div>
+              </div>
+              <div class="hero__float hero__float--right glass-card" style="animation: float 6s ease-in-out 1.5s infinite;">
+                <div class="hero__float-label">Response Time</div>
+                <div class="hero__float-value" style="color: var(--color-success);">&lt; 2 min</div>
+                <div class="hero__float-bar">
+                  <div class="hero__float-bar-fill" data-width="92" style="background: var(--color-success);"></div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <!-- Standard: Helpdesk -->
-          <div class="bento-card reveal">
-            <div class="bento-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            </div>
-            <h3>Helpdesk & Ticketing</h3>
-            <p>Live chat widget, ticket tracking, customizable stages, priorities, and types. Every conversation in one place.</p>
-          </div>
+      <!-- Logo wall -->
+      <section class="logo-wall">
+        <div class="logo-wall__label">Trusted by fast-growing startups</div>
+        <div class="logo-wall__track" aria-hidden="true">
+          <div class="logo-wall__item"><i data-lucide="zap"></i> Velocity AI</div>
+          <div class="logo-wall__item"><i data-lucide="layers"></i> StackShift</div>
+          <div class="logo-wall__item"><i data-lucide="shield"></i> TrustLayer</div>
+          <div class="logo-wall__item"><i data-lucide="bar-chart-3"></i> MetricFlow</div>
+          <div class="logo-wall__item"><i data-lucide="globe"></i> NomadOps</div>
+          <div class="logo-wall__item"><i data-lucide="cpu"></i> CoreSync</div>
+          <div class="logo-wall__item"><i data-lucide="rocket"></i> LaunchKit</div>
+          <div class="logo-wall__item"><i data-lucide="database"></i> DataNest</div>
+          <!-- Duplicate for seamless scroll -->
+          <div class="logo-wall__item"><i data-lucide="zap"></i> Velocity AI</div>
+          <div class="logo-wall__item"><i data-lucide="layers"></i> StackShift</div>
+          <div class="logo-wall__item"><i data-lucide="shield"></i> TrustLayer</div>
+          <div class="logo-wall__item"><i data-lucide="bar-chart-3"></i> MetricFlow</div>
+          <div class="logo-wall__item"><i data-lucide="globe"></i> NomadOps</div>
+          <div class="logo-wall__item"><i data-lucide="cpu"></i> CoreSync</div>
+          <div class="logo-wall__item"><i data-lucide="rocket"></i> LaunchKit</div>
+          <div class="logo-wall__item"><i data-lucide="database"></i> DataNest</div>
+        </div>
+      </section>
 
-          <!-- Standard: Onboarding -->
-          <div class="bento-card reveal">
-            <div class="bento-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            </div>
-            <h3>Onboarding & Projects</h3>
-            <p>Repeatable onboarding processes with live tracking. Keep your team and customers aligned.</p>
-          </div>
+      <!-- Bento Features -->
+      <section class="section">
+        <div class="container">
+          <div class="section__eyebrow">Everything in one place</div>
+          <h2 class="section__title">Built for the way startups actually work</h2>
+          <p class="section__desc" style="margin-bottom: var(--space-12);">Every tool you need, connected from day one. No more duct-taping six different SaaS products together.</p>
 
-          <!-- Standard: AI -->
-          <div class="bento-card reveal">
-            <div class="bento-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8c0 3.4 2.1 6.3 5 7.4V20h6v-2.6c2.9-1.1 5-4 5-7.4a8 8 0 0 0-8-8z"/><line x1="10" y1="22" x2="14" y2="22"/></svg>
-            </div>
-            <h3>AI-Powered Assist</h3>
-            <p>AI recaps on deals, contacts, and dashboards. Train chat widgets with custom Q&A pairs and confidence thresholds.</p>
-          </div>
-
-          <!-- Large card: Knowledge Base -->
-          <div class="bento-card bento-card--lg reveal">
-            <div class="bento-card-content">
-              <div class="bento-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h5"/></svg>
-              </div>
-              <h3>Knowledge Base & Docs</h3>
-              <p>Fully searchable library powered by AI. Product documentation your customers will actually use, with built-in live chat and search.</p>
-            </div>
-            <div class="bento-card-visual">
-              <div class="docs-visual">
-                <div class="doc-line doc-line--title"></div>
-                <div class="doc-line doc-line--text"></div>
-                <div class="doc-line doc-line--text doc-line--short"></div>
-                <div class="doc-divider"></div>
-                <div class="doc-line doc-line--subtitle"></div>
-                <div class="doc-line doc-line--text"></div>
-                <div class="doc-line doc-line--text doc-line--medium"></div>
+          <div class="bento" data-stagger>
+            <!-- Card 1: CRM - wide -->
+            <div class="bento__card bento__card--wide">
+              <div class="bento__card-icon"><i data-lucide="users"></i></div>
+              <div class="bento__card-title">CRM & Lead Management</div>
+              <div class="bento__card-desc">Capture, qualify, and assign leads from any source. Enrich contacts with third-party data automatically. Keep your pipeline clean.</div>
+              <div class="bento__card-visual">
+                <img src="https://framerusercontent.com/images/8YhgCzoF51iJOxNjZ1INCDKiI.png?width=3162&height=941" alt="ellocharlie lead management interface" width="3162" height="941" loading="lazy" decoding="async" style="border-radius: var(--radius-md);">
               </div>
             </div>
-          </div>
 
-          <!-- Standard: Automations -->
-          <div class="bento-card reveal">
-            <div class="bento-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+            <!-- Card 2: Sales Pipeline -->
+            <div class="bento__card">
+              <div class="bento__card-icon"><i data-lucide="git-branch"></i></div>
+              <div class="bento__card-title">Sales Pipelines</div>
+              <div class="bento__card-desc">Multiple pipelines, custom stages, smart notifications. Every deal keeps moving.</div>
             </div>
-            <h3>Workflow Automations</h3>
-            <p>Trigger actions, update records, and route tasks automatically. No manual copy-paste.</p>
-          </div>
 
-          <!-- Standard: Status Page -->
-          <div class="bento-card reveal">
-            <div class="bento-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <!-- Card 3: AI - accent -->
+            <div class="bento__card bento__card--accent">
+              <div class="bento__card-icon"><i data-lucide="sparkles"></i></div>
+              <div class="bento__card-title">AI-Powered Insights</div>
+              <div class="bento__card-desc">AI recaps at every level — deals, companies, contacts, and dashboards. Always prepared.</div>
+              <div class="bento__card-visual">
+                <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+                  <div style="display:flex;align-items:center;gap:var(--space-2);"><div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.6);"></div><span style="font-size:var(--text-xs);opacity:0.8;">Deal health analyzed</span></div>
+                  <div style="display:flex;align-items:center;gap:var(--space-2);"><div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.6);"></div><span style="font-size:var(--text-xs);opacity:0.8;">Next steps suggested</span></div>
+                  <div style="display:flex;align-items:center;gap:var(--space-2);"><div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.6);"></div><span style="font-size:var(--text-xs);opacity:0.8;">Sentiment tracked</span></div>
+                </div>
+              </div>
             </div>
-            <h3>Status & Release Pages</h3>
-            <p>Publish status updates, service alerts, and release notes. Automatically notify subscribers.</p>
-          </div>
 
-          <!-- Standard: Metrics -->
-          <div class="bento-card reveal">
-            <div class="bento-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <!-- Card 4: Helpdesk -->
+            <div class="bento__card">
+              <div class="bento__card-icon"><i data-lucide="headphones"></i></div>
+              <div class="bento__card-title">Helpdesk & Ticketing</div>
+              <div class="bento__card-desc">Customizable stages, priorities, and ticket types. Customers always in the know.</div>
             </div>
-            <h3>Metrics & Reporting</h3>
-            <p>Centralize metrics, spot anomalies, and pull reports for your team and investors.</p>
-          </div>
 
-          <!-- Standard: Developer Kit -->
-          <div class="bento-card reveal">
-            <div class="bento-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <!-- Card 5: Live Chat -->
+            <div class="bento__card">
+              <div class="bento__card-icon"><i data-lucide="message-circle"></i></div>
+              <div class="bento__card-title">Live Chat & AI Assist</div>
+              <div class="bento__card-desc">Train AI with custom Q&A. Set confidence thresholds. Humans step in when needed.</div>
             </div>
-            <h3>Developer Kit</h3>
-            <p>REST API, webhooks, and MCP server. Extend ellocharlie into your existing systems.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ============ HOW IT WORKS ============ -->
-    <section class="section how-section" id="how-it-works">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-label reveal">How it works</p>
-          <h2 class="section-title reveal">Get started in minutes,<br>not months</h2>
-        </div>
-
-        <div class="steps-grid">
-          <div class="step-card reveal">
-            <div class="step-num">1</div>
-            <h3>Sign up & import</h3>
-            <p>Create your workspace in seconds. Import existing leads and contacts or start fresh.</p>
-          </div>
-          <div class="step-card reveal">
-            <div class="step-num">2</div>
-            <h3>Configure your flow</h3>
-            <p>Set up pipelines, helpdesk, docs, and automations. Everything connects out of the box.</p>
-          </div>
-          <div class="step-card reveal">
-            <div class="step-num">3</div>
-            <h3>Grow without churn</h3>
-            <p>Your entire team stays in sync. Customers don't slip through cracks. Growth isn't hard.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ METRICS / SOCIAL PROOF ============ -->
-    <section class="metrics-band">
-      <div class="container">
-        <div class="metrics-grid">
-          <div class="metric reveal">
-            <span class="metric-value">12+</span>
-            <span class="metric-label">tools replaced by one</span>
-          </div>
-          <div class="metric-divider"></div>
-          <div class="metric reveal">
-            <span class="metric-value">7 day</span>
-            <span class="metric-label">free trial, no card required</span>
-          </div>
-          <div class="metric-divider"></div>
-          <div class="metric reveal">
-            <span class="metric-value">5 min</span>
-            <span class="metric-label">to set up your workspace</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PRICING ============ -->
-    <section class="section pricing-section" id="pricing">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-label reveal">Pricing</p>
-          <h2 class="section-title reveal">Simple, transparent pricing</h2>
-          <p class="section-subtitle reveal">No contracts. No hidden fees. Cancel anytime.</p>
-        </div>
-
-        <div class="pricing-grid">
-          <!-- Core -->
-          <div class="pricing-card reveal">
-            <div class="pricing-card-top">
-              <p class="pricing-plan">Core</p>
-              <p class="pricing-price">$45 <span>/seat/mo</span></p>
-              <p class="pricing-desc">Everything you need to manage customers end-to-end.</p>
+            <!-- Card 6: Onboarding - wide -->
+            <div class="bento__card bento__card--wide">
+              <div class="bento__card-icon"><i data-lucide="clipboard-check"></i></div>
+              <div class="bento__card-title">Onboarding & Projects</div>
+              <div class="bento__card-desc">Repeatable onboarding with live tracking. Keep your team and customers aligned on the same view — from first day to full adoption.</div>
             </div>
-            <ul class="pricing-features" role="list">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                CRM & Sales Pipeline
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Customer & Project Management
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Live Chat & Helpdesk
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Knowledge Base & Status Page
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Automations & Reporting
-              </li>
-            </ul>
-            <a href="https://app.ellocharlie.com/register?plan=core" target="_blank" rel="noopener noreferrer" class="btn btn--ghost pricing-btn">Start Free Trial</a>
-          </div>
 
-          <!-- Plus -->
-          <div class="pricing-card pricing-card--featured reveal">
-            <div class="pricing-badge-wrap">
-              <span class="pricing-badge">Recommended</span>
+            <!-- Card 7: Knowledge Base -->
+            <div class="bento__card">
+              <div class="bento__card-icon"><i data-lucide="book-open"></i></div>
+              <div class="bento__card-title">Knowledge Base</div>
+              <div class="bento__card-desc">AI-powered search so customers find answers fast and never feel stuck.</div>
             </div>
-            <div class="pricing-card-top">
-              <p class="pricing-plan">Plus</p>
-              <p class="pricing-price">$70 <span>/seat/mo</span></p>
-              <p class="pricing-desc">For teams that need custom branding and priority support.</p>
+
+            <!-- Card 8: NPS -->
+            <div class="bento__card">
+              <div class="bento__card-icon"><i data-lucide="heart"></i></div>
+              <div class="bento__card-title">NPS & Feedback</div>
+              <div class="bento__card-desc">Automate NPS surveys, track scores, trends, and sentiment. Spot issues early.</div>
             </div>
-            <ul class="pricing-features" role="list">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Everything in Core
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Custom Domains
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                1-Hour Onboarding Call
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Beta Feature Access
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                NPS Scoring & Customer Feedback
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Integrations & Priority Support
-              </li>
-            </ul>
-            <a href="https://app.ellocharlie.com/register?plan=plus" target="_blank" rel="noopener noreferrer" class="btn btn--primary pricing-btn">Start Free Trial</a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ============ FAQ ============ -->
-    <section class="section faq-section" id="faq">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-label reveal">FAQ</p>
-          <h2 class="section-title reveal">Common questions</h2>
-        </div>
-
-        <div class="faq-list">
-          <div class="faq-item reveal">
-            <button class="faq-question" aria-expanded="false">
-              Can I customize the branding?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. Documentation, status, and project portals can all use your branding and colors for a seamless experience that matches your product.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal">
-            <button class="faq-question" aria-expanded="false">
-              What if I need help setting up?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="faq-answer">
-              <p>We offer documentation, video guides, and in-app chat. You can also schedule a call for advanced customization and setup help. Plus plan includes a 1-hour onboarding call.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal">
-            <button class="faq-question" aria-expanded="false">
-              Can I use my own domain?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="faq-answer">
-              <p>Yes, the Plus plan includes custom domains so your documentation, project portals, and status pages live on your own domain.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal">
-            <button class="faq-question" aria-expanded="false">
-              Can I cancel anytime?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="faq-answer">
-              <p>Absolutely. No long-term contracts. Upgrade, downgrade, or cancel your subscription at any time.</p>
-            </div>
-          </div>
-
-          <div class="faq-item reveal">
-            <button class="faq-question" aria-expanded="false">
-              Is there an API?
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. ellocharlie offers a REST API, webhooks, and an MCP server so you can extend and integrate with your existing tools and workflows.</p>
+            <!-- Card 9: Automations -->
+            <div class="bento__card">
+              <div class="bento__card-icon"><i data-lucide="workflow"></i></div>
+              <div class="bento__card-title">Automations</div>
+              <div class="bento__card-desc">Trigger actions, update records, route tasks. Nothing falls through the cracks.</div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ============ FINAL CTA ============ -->
-    <section class="cta-band">
-      <div class="container cta-inner">
-        <h2 class="reveal">Stop losing customers to broken processes</h2>
-        <p class="reveal">Start your 7-day free trial today and get back to building something incredible.</p>
-        <div class="hero-actions reveal">
-          <a href="https://app.ellocharlie.com/register" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Start Free Trial</a>
-          <a href="mailto:hello@ellocharlie.com" class="btn btn--ghost btn--lg">Contact Sales</a>
+      <!-- CTA -->
+      <section class="section--tight">
+        <div class="container">
+          <div class="cta-section fade-in">
+            <h2 class="cta-section__title">Ready to stop duct-taping tools?</h2>
+            <p class="cta-section__desc">Start your 7-day free trial. No credit card required. Set up in under 5 minutes.</p>
+            <a href="https://app.ellocharlie.com" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Start Free Trial</a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         PAGE: FEATURES
+         ═══════════════════════════════════════ -->
+    <div class="page" id="page-features" data-page="features">
+
+      <section class="section section--hero" style="min-height: auto; padding-block: clamp(var(--space-16), 8vw, var(--space-24));">
+        <div class="container">
+          <div class="features-hero">
+            <div class="section__eyebrow">Features</div>
+            <h1 class="section__title" style="font-size: var(--text-3xl);">Everything your team needs,<br>nothing it doesn't</h1>
+            <p class="section__desc" style="margin-inline: auto;">From first touch to long-term retention — every stage of the customer journey, thoughtfully built into one system.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature Tabs -->
+      <section class="section--tight">
+        <div class="container">
+          <div class="feature-tabs" role="tablist">
+            <button class="feature-tab active" data-tab="sales" role="tab" aria-selected="true">Sales & CRM</button>
+            <button class="feature-tab" data-tab="support" role="tab" aria-selected="false">Support & Chat</button>
+            <button class="feature-tab" data-tab="success" role="tab" aria-selected="false">Customer Success</button>
+            <button class="feature-tab" data-tab="developer" role="tab" aria-selected="false">Developer Kit</button>
+          </div>
+
+          <!-- Tab: Sales -->
+          <div class="feature-tab-panel active" id="tab-sales">
+            <div class="feature-showcase">
+              <div class="feature-showcase__content">
+                <h2 class="section__title">Close deals with clarity, not chaos</h2>
+                <p class="section__desc" style="margin-bottom: var(--space-6);">Manage deals across multiple pipelines with custom stages, smart notifications, and automations that keep every deal moving forward.</p>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-3);">
+                  <li style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-secondary);"><i data-lucide="check" style="width:16px;height:16px;color:var(--color-primary);flex-shrink:0;"></i> Lead forms & meeting scheduling</li>
+                  <li style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-secondary);"><i data-lucide="check" style="width:16px;height:16px;color:var(--color-primary);flex-shrink:0;"></i> Data enrichment from third-party sources</li>
+                  <li style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-secondary);"><i data-lucide="check" style="width:16px;height:16px;color:var(--color-primary);flex-shrink:0;"></i> Email sequences & templates</li>
+                  <li style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-secondary);"><i data-lucide="check" style="width:16px;height:16px;color:var(--color-primary);flex-shrink:0;"></i> AI recaps for every deal and company</li>
+                </ul>
+              </div>
+              <div class="feature-showcase__visual">
+                <img src="https://framerusercontent.com/images/nLispxFGzePmMvCOJmh5EW7iJFM.png?width=1200&height=884" alt="Sales pipeline view in ellocharlie" width="1200" height="884" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab: Support -->
+          <div class="feature-tab-panel" id="tab-support">
+            <div class="feature-showcase feature-showcase--reverse">
+              <div class="feature-showcase__content">
+                <h2 class="section__title">Instant answers, human warmth</h2>
+                <p class="section__desc" style="margin-bottom: var(--space-6);">Give customers instant answers with live chat or AI-powered docs. Train AI with custom Q&A pairs and set confidence thresholds.</p>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-3);">
+                  <li style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-secondary);"><i data-lucide="check" style="width:16px;height:16px;color:var(--color-primary);flex-shrink:0;"></i> Live chat with AI assist</li>
+                  <li style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-secondary);"><i data-lucide="check" style="width:16px;height:16px;color:var(--color-primary);flex-shrink:0;"></i> Helpdesk & ticketing management</li>
+                  <li style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-secondary);"><i data-lucide="check" style="width:16px;height:16px;color:var(--color-primary);flex-shrink:0;"></i> AI Feature Expert for in-app guidance</li>
+                  <li style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-secondary);"><i data-lucide="check" style="width:16px;height:16px;color:var(--color-primary);flex-shrink:0;"></i> Knowledge base with AI search</li>
+                </ul>
+              </div>
+              <div class="feature-showcase__visual">
+                <img src="https://framerusercontent.com/images/nLispxFGzePmMvCOJmh5EW7iJFM.png?width=1200&height=884" alt="Support and chat tools in ellocharlie" width="1200" height="884" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab: Success -->
+          <div class="feature-tab-panel" id="tab-success">
+            <div class="feature-showcase">
+              <div class="feature-showcase__content">
+                <h2 class="section__title">Retain customers, not just acquire them</h2>
+                <p class="section__desc" style="margin-bottom: var(--space-6);">Create repeatable onboarding processes, track NPS scores, capture feedback, and publish status updates — all from one place.</p>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-3);">
+                  <li style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-secondary);"><i data-lucide="check" style="width:16px;height:16px;color:var(--color-primary);flex-shrink:0;"></i> Onboarding & project tracking</li>
+                  <li style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-secondary);"><i data-lucide="check" style="width:16px;height:16px;color:var(--color-primary);flex-shrink:0;"></i> NPS scoring & sentiment analysis</li>
+                  <li style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-secondary);"><i data-lucide="check" style="width:16px;height:16px;color:var(--color-primary);flex-shrink:0;"></i> Customer feedback collection</li>
+                  <li style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-secondary);"><i data-lucide="check" style="width:16px;height:16px;color:var(--color-primary);flex-shrink:0;"></i> Status & release updates</li>
+                </ul>
+              </div>
+              <div class="feature-showcase__visual">
+                <img src="https://framerusercontent.com/images/8YhgCzoF51iJOxNjZ1INCDKiI.png?width=3162&height=941" alt="Customer success tools in ellocharlie" width="3162" height="941" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab: Developer -->
+          <div class="feature-tab-panel" id="tab-developer">
+            <div class="feature-showcase feature-showcase--reverse">
+              <div class="feature-showcase__content">
+                <h2 class="section__title">Built to extend, ready for AI</h2>
+                <p class="section__desc" style="margin-bottom: var(--space-6);">Use our REST API, webhooks, and MCP server to integrate into your systems. Stay AI-ready as your stack evolves.</p>
+                <div class="code-block" style="margin-bottom: var(--space-6);">
+                  <span class="comment">// Connect via MCP server</span><br>
+                  <span class="keyword">const</span> client = <span class="keyword">new</span> ElloCharlie({<br>
+                  &nbsp;&nbsp;apiKey: <span class="string">'ec_live_...'</span>,<br>
+                  &nbsp;&nbsp;server: <span class="string">'mcp'</span><br>
+                  });<br><br>
+                  <span class="keyword">const</span> deals = <span class="keyword">await</span> client.deals.list({<br>
+                  &nbsp;&nbsp;stage: <span class="string">'negotiation'</span>,<br>
+                  &nbsp;&nbsp;sort: <span class="string">'-value'</span><br>
+                  });
+                </div>
+              </div>
+              <div class="feature-showcase__visual" style="background: var(--color-surface-offset); padding: var(--space-8);">
+                <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+                  <div style="display:flex;align-items:center;gap:var(--space-3);"><i data-lucide="webhook" style="width:20px;height:20px;color:var(--color-primary);"></i><div><div style="font-weight:600;font-size:var(--text-sm);">REST API</div><div style="font-size:var(--text-xs);color:var(--color-text-muted);">Full CRUD operations for all resources</div></div></div>
+                  <div style="display:flex;align-items:center;gap:var(--space-3);"><i data-lucide="radio" style="width:20px;height:20px;color:var(--color-primary);"></i><div><div style="font-weight:600;font-size:var(--text-sm);">Webhooks</div><div style="font-size:var(--text-xs);color:var(--color-text-muted);">Real-time event notifications</div></div></div>
+                  <div style="display:flex;align-items:center;gap:var(--space-3);"><i data-lucide="cpu" style="width:20px;height:20px;color:var(--color-primary);"></i><div><div style="font-weight:600;font-size:var(--text-sm);">MCP Server</div><div style="font-size:var(--text-xs);color:var(--color-text-muted);">AI-native protocol for LLM integrations</div></div></div>
+                  <div style="display:flex;align-items:center;gap:var(--space-3);"><i data-lucide="plug" style="width:20px;height:20px;color:var(--color-primary);"></i><div><div style="font-weight:600;font-size:var(--text-sm);">Custom Fields</div><div style="font-size:var(--text-xs);color:var(--color-text-muted);">Extend any entity with your own schema</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- All features grid -->
+      <section class="section">
+        <div class="container">
+          <div style="text-align:center; margin-bottom: var(--space-12);">
+            <div class="section__eyebrow" style="justify-content:center;">Complete toolkit</div>
+            <h2 class="section__title" style="margin-inline:auto;">Every feature your team needs</h2>
+          </div>
+          <div class="feature-grid" data-stagger>
+            <div class="feature-grid__item"><div class="feature-grid__icon"><i data-lucide="file-text"></i></div><div class="feature-grid__title">Lead Forms</div><div class="feature-grid__desc">Create forms for your website, optimize inbound, and route leads to your sales team.</div></div>
+            <div class="feature-grid__item"><div class="feature-grid__icon"><i data-lucide="calendar"></i></div><div class="feature-grid__title">Schedule Meetings</div><div class="feature-grid__desc">Connect your calendar and let prospects book time with you directly.</div></div>
+            <div class="feature-grid__item"><div class="feature-grid__icon"><i data-lucide="database"></i></div><div class="feature-grid__title">Data Enrichment</div><div class="feature-grid__desc">Enrich contacts with third-party data — automatically or on-demand.</div></div>
+            <div class="feature-grid__item"><div class="feature-grid__icon"><i data-lucide="mail"></i></div><div class="feature-grid__title">Email Sequences</div><div class="feature-grid__desc">Automate follow-ups, build templates, and send directly from profiles.</div></div>
+            <div class="feature-grid__item"><div class="feature-grid__icon"><i data-lucide="sparkles"></i></div><div class="feature-grid__title">AI Recaps</div><div class="feature-grid__desc">AI analysis at every level — deals, companies, contacts, and dashboards.</div></div>
+            <div class="feature-grid__item"><div class="feature-grid__icon"><i data-lucide="message-square"></i></div><div class="feature-grid__title">Live Chat</div><div class="feature-grid__desc">Marketing or support — give customers instant answers with choice of live or AI chat.</div></div>
+            <div class="feature-grid__item"><div class="feature-grid__icon"><i data-lucide="shield-check"></i></div><div class="feature-grid__title">AI Chat Assist</div><div class="feature-grid__desc">Custom Q&A pairs with confidence thresholds — AI answers until humans are needed.</div></div>
+            <div class="feature-grid__item"><div class="feature-grid__icon"><i data-lucide="layout-grid"></i></div><div class="feature-grid__title">Status Page</div><div class="feature-grid__desc">Publish status, service, and release updates. Subscribers notified automatically.</div></div>
+            <div class="feature-grid__item"><div class="feature-grid__icon"><i data-lucide="settings"></i></div><div class="feature-grid__title">Custom Domains</div><div class="feature-grid__desc">Every touchpoint lives under your domain — support, knowledge base, status pages.</div></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         PAGE: INTEGRATIONS
+         ═══════════════════════════════════════ -->
+    <div class="page" id="page-integrations" data-page="integrations">
+
+      <section class="section section--hero" style="min-height: auto; padding-block: clamp(var(--space-16), 8vw, var(--space-24));">
+        <div class="container">
+          <div class="features-hero">
+            <div class="section__eyebrow">AI-Native Integrations</div>
+            <h1 class="section__title" style="font-size: var(--text-3xl);">Works with your<br>AI coding stack</h1>
+            <p class="section__desc" style="margin-inline: auto;">ellocharlie's MCP server and API make it a first-class citizen in AI-assisted development workflows — from Claude to Codex to your IDE.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section--tight">
+        <div class="container">
+          <div class="integration-cards" data-stagger>
+            <!-- Claude -->
+            <div class="integration-card">
+              <div class="integration-card__badge">AI Agent</div>
+              <div class="integration-card__icon integration-card__icon--claude">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/></svg>
+              </div>
+              <div class="integration-card__title">Claude Coworker</div>
+              <div class="integration-card__desc">Connect ellocharlie as an MCP tool server and let Claude manage your CRM data, summarize deal pipelines, draft customer responses, and automate follow-ups — all through natural conversation.</div>
+              <ul class="integration-card__features">
+                <li><i data-lucide="check"></i> Query deals, contacts, and tickets via natural language</li>
+                <li><i data-lucide="check"></i> Generate AI recaps and pipeline summaries</li>
+                <li><i data-lucide="check"></i> Draft and send customer communications</li>
+                <li><i data-lucide="check"></i> Automate data enrichment workflows</li>
+                <li><i data-lucide="check"></i> Monitor NPS trends and flag at-risk accounts</li>
+              </ul>
+              <div class="code-block" style="margin-top: var(--space-4);">
+                <span class="comment">// claude_desktop_config.json</span><br>
+                {<br>
+                &nbsp;&nbsp;<span class="string">"mcpServers"</span>: {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"ellocharlie"</span>: {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"url"</span>: <span class="string">"https://mcp.ellocharlie.com"</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"token"</span>: <span class="string">"ec_live_..."</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                &nbsp;&nbsp;}<br>
+                }
+              </div>
+            </div>
+
+            <!-- Codex -->
+            <div class="integration-card">
+              <div class="integration-card__badge">AI Agent</div>
+              <div class="integration-card__icon integration-card__icon--codex">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <div class="integration-card__title">OpenAI Codex</div>
+              <div class="integration-card__desc">Use ellocharlie's API and MCP server with OpenAI Codex to build custom CRM automations, generate integration scripts, and create data pipelines — all with AI-generated code that works on the first run.</div>
+              <ul class="integration-card__features">
+                <li><i data-lucide="check"></i> Build custom webhook handlers and automations</li>
+                <li><i data-lucide="check"></i> Generate data migration scripts</li>
+                <li><i data-lucide="check"></i> Create custom reporting dashboards</li>
+                <li><i data-lucide="check"></i> Automate data syncs between tools</li>
+                <li><i data-lucide="check"></i> Build internal tools on top of the API</li>
+              </ul>
+              <div class="code-block" style="margin-top: var(--space-4);">
+                <span class="comment"># Codex prompt</span><br>
+                <span class="string">"Build a webhook handler that</span><br>
+                <span class="string">&nbsp;syncs new ellocharlie deals</span><br>
+                <span class="string">&nbsp;to our Slack #sales channel</span><br>
+                <span class="string">&nbsp;with deal value and stage"</span>
+              </div>
+            </div>
+
+            <!-- Cursor / IDE -->
+            <div class="integration-card">
+              <div class="integration-card__badge">IDE</div>
+              <div class="integration-card__icon integration-card__icon--cursor">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5S21.88 11 20.5 11z"/></svg>
+              </div>
+              <div class="integration-card__title">Cursor & VS Code</div>
+              <div class="integration-card__desc">Drop ellocharlie into your IDE's MCP configuration. Query customer data, create tickets from code comments, and build integrations without leaving your editor.</div>
+              <ul class="integration-card__features">
+                <li><i data-lucide="check"></i> MCP server works with any compatible IDE</li>
+                <li><i data-lucide="check"></i> Query CRM data while writing code</li>
+                <li><i data-lucide="check"></i> Create tickets and bugs from your editor</li>
+                <li><i data-lucide="check"></i> Auto-generate API client code</li>
+              </ul>
+            </div>
+
+            <!-- More integrations -->
+            <div class="integration-card">
+              <div class="integration-card__badge">Ecosystem</div>
+              <div class="integration-card__icon integration-card__icon--vscode">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+              </div>
+              <div class="integration-card__title">Connect Your Stack</div>
+              <div class="integration-card__desc">The tools you rely on shouldn't slow you down. Connect your existing stack so data flows automatically and your team has the full picture.</div>
+              <ul class="integration-card__features">
+                <li><i data-lucide="check"></i> Slack, Discord, and team chat tools</li>
+                <li><i data-lucide="check"></i> Calendar and email providers</li>
+                <li><i data-lucide="check"></i> Zapier and webhook-based automations</li>
+                <li><i data-lucide="check"></i> Custom integrations via REST API</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Workflow diagram -->
+          <div class="integration-workflow fade-in">
+            <h3 style="text-align:center; font-family: var(--font-display); font-weight: 600; font-size: var(--text-lg); margin-bottom: var(--space-8);">How it works</h3>
+            <div class="workflow-steps">
+              <div class="workflow-step">
+                <div class="workflow-step__num">1</div>
+                <div class="workflow-step__title">Connect</div>
+                <div class="workflow-step__desc">Add ellocharlie MCP server to your AI tool or IDE config</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step__num">2</div>
+                <div class="workflow-step__title">Authenticate</div>
+                <div class="workflow-step__desc">Use your API key to securely connect your workspace</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step__num">3</div>
+                <div class="workflow-step__title">Query</div>
+                <div class="workflow-step__desc">Ask questions in natural language or make API calls</div>
+              </div>
+              <div class="workflow-step">
+                <div class="workflow-step__num">4</div>
+                <div class="workflow-step__title">Automate</div>
+                <div class="workflow-step__desc">Build workflows that keep your CRM and code in sync</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="section">
+        <div class="container">
+          <div class="cta-section fade-in">
+            <h2 class="cta-section__title">AI-ready from day one</h2>
+            <p class="cta-section__desc">Every ellocharlie plan includes API access and MCP server. Start building today.</p>
+            <a href="https://app.ellocharlie.com" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Start Free Trial</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         PAGE: ABOUT
+         ═══════════════════════════════════════ -->
+    <div class="page" id="page-about" data-page="about">
+
+      <section class="section section--hero" style="min-height: auto; padding-block: clamp(var(--space-16), 8vw, var(--space-24));">
+        <div class="container">
+          <div class="about-hero">
+            <div>
+              <div class="section__eyebrow">About ellocharlie</div>
+              <h1 class="section__title" style="font-size: var(--text-3xl);">Built by a founder who lived this pain</h1>
+              <p class="section__desc" style="margin-bottom: var(--space-6); max-width: 50ch;">
+                Years of watching great teams lose hours to disconnected tools as they scrambled to scale. ellocharlie was born from the belief that startups deserve better than duct-taped SaaS.
+              </p>
+              <div style="display:flex;align-items:center;gap:var(--space-4);margin-top:var(--space-8);">
+                <div style="width:48px;height:48px;border-radius:var(--radius-full);background:var(--color-primary-surface);display:flex;align-items:center;justify-content:center;color:var(--color-primary);font-family:var(--font-display);font-weight:700;font-size:var(--text-lg);">N</div>
+                <div>
+                  <div style="font-family:var(--font-display);font-weight:600;font-size:var(--text-base);">Nicholas Richards</div>
+                  <div style="font-size:var(--text-sm);color:var(--color-text-muted);">Founder & CEO</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:var(--space-3);margin-top:var(--space-4);">
+                <a href="https://linkedin.com/in/nicholasdr" target="_blank" rel="noopener noreferrer" class="btn btn--ghost" style="padding:var(--space-2);"><i data-lucide="linkedin" style="width:18px;height:18px;"></i></a>
+                <a href="mailto:nicholas@ellocharlie.com" class="btn btn--ghost" style="padding:var(--space-2);"><i data-lucide="mail" style="width:18px;height:18px;"></i></a>
+              </div>
+            </div>
+            <div class="about-hero__image">
+              <div class="about-hero__image-placeholder bg-dots">
+                <svg viewBox="0 0 120 120" width="120" height="120" fill="none" style="opacity:0.4;">
+                  <circle cx="60" cy="45" r="22" stroke="currentColor" stroke-width="2.5"/>
+                  <path d="M25 105c0-19.33 15.67-35 35-35s35 15.67 35 35" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mission / Values -->
+      <section class="section--tight">
+        <div class="container">
+          <div style="text-align:center;margin-bottom:var(--space-12);">
+            <div class="section__eyebrow" style="justify-content:center;">Our beliefs</div>
+            <h2 class="section__title" style="margin-inline:auto;">What drives ellocharlie</h2>
+          </div>
+          <div class="about-values" data-stagger>
+            <div class="about-value">
+              <div class="about-value__num">01</div>
+              <div class="about-value__title">Startups deserve real tools</div>
+              <div class="about-value__desc">Not stripped-down enterprise software. Not over-simplified toys. Real tools built for teams of 2-50 that need to move fast without the bloat.</div>
+            </div>
+            <div class="about-value">
+              <div class="about-value__num">02</div>
+              <div class="about-value__title">Connected beats bolted-on</div>
+              <div class="about-value__desc">Every feature in ellocharlie was designed to work together from day one. No integration headaches, no data silos, no surprises.</div>
+            </div>
+            <div class="about-value">
+              <div class="about-value__num">03</div>
+              <div class="about-value__title">Modern standards matter</div>
+              <div class="about-value__desc">Speed, usability, and clarity aren't nice-to-haves. We build with modern standards because your team's time is too valuable for slow, confusing software.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timeline -->
+      <section class="section">
+        <div class="container container--narrow">
+          <div class="section__eyebrow">The journey</div>
+          <h2 class="section__title" style="margin-bottom: var(--space-8);">Building in public</h2>
+          <div class="about-timeline" data-stagger>
+            <div class="timeline-item">
+              <div class="timeline-item__date">2024</div>
+              <div class="timeline-item__title">The problem crystallized</div>
+              <div class="timeline-item__desc">After years of watching startups struggle with disconnected tools, Nicholas started building the system he wished existed.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item__date">Early 2025</div>
+              <div class="timeline-item__title">First lines of code</div>
+              <div class="timeline-item__desc">CRM, sales pipelines, and helpdesk — the core of what would become ellocharlie took shape.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item__date">Mid 2025</div>
+              <div class="timeline-item__title">AI-native from the start</div>
+              <div class="timeline-item__desc">AI recaps, chat assist, and the MCP server were built in — not bolted on as an afterthought.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-item__date">2026</div>
+              <div class="timeline-item__title">Launch & growth</div>
+              <div class="timeline-item__desc">ellocharlie launched publicly with 24+ built-in tools, helping startups replace their entire stack of disconnected SaaS products.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="section--tight">
+        <div class="container">
+          <div class="cta-section fade-in">
+            <h2 class="cta-section__title">Join the mission</h2>
+            <p class="cta-section__desc">Help us build the operating system for startup growth. Start your free trial today.</p>
+            <a href="https://app.ellocharlie.com" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Start Free Trial</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         PAGE: PRICING
+         ═══════════════════════════════════════ -->
+    <div class="page" id="page-pricing" data-page="pricing">
+
+      <section class="section section--hero" style="min-height: auto; padding-block: clamp(var(--space-16), 8vw, var(--space-24));">
+        <div class="container">
+          <div class="pricing-hero">
+            <div class="section__eyebrow" style="justify-content:center;">Pricing</div>
+            <h1 class="section__title" style="font-size: var(--text-3xl);">Actual sensible pricing</h1>
+            <p class="section__desc" style="margin-inline: auto;">No contracts. No hidden fees. No per-feature upsells. 7-day free trial on every plan.</p>
+
+            <div class="pricing-toggle">
+              <span class="pricing-toggle__label active" data-billing="monthly">Monthly</span>
+              <button class="pricing-toggle__switch" id="billingToggle" aria-label="Toggle annual billing"></button>
+              <span class="pricing-toggle__label" data-billing="annual">Annual</span>
+              <span class="pricing-toggle__save">Save 20%</span>
+            </div>
+          </div>
+
+          <div class="pricing-cards" data-stagger>
+            <!-- Core -->
+            <div class="pricing-card">
+              <div class="pricing-card__name">Core</div>
+              <div class="pricing-card__desc">Everything you need to manage customers and close deals.</div>
+              <div class="pricing-card__price">
+                <span class="pricing-card__amount" data-monthly="55" data-annual="44">$55</span>
+                <span class="pricing-card__period">per user / month</span>
+              </div>
+              <ul class="pricing-card__features" role="list">
+                <li><i data-lucide="check"></i> CRM, Leads & Sales Pipelines</li>
+                <li><i data-lucide="check"></i> Customer & Project Management</li>
+                <li><i data-lucide="check"></i> Live Chat for Marketing & Support</li>
+                <li><i data-lucide="check"></i> Helpdesk & Ticketing</li>
+                <li><i data-lucide="check"></i> Knowledge Base & Status Pages</li>
+                <li><i data-lucide="check"></i> Automations</li>
+                <li><i data-lucide="check"></i> Metrics & Reporting</li>
+                <li><i data-lucide="check"></i> API & MCP Server Access</li>
+              </ul>
+              <a href="https://app.ellocharlie.com" target="_blank" rel="noopener noreferrer" class="btn btn--secondary btn--lg">Start Free Trial</a>
+            </div>
+
+            <!-- Plus -->
+            <div class="pricing-card pricing-card--featured">
+              <div class="pricing-card__name">Plus</div>
+              <div class="pricing-card__desc">For teams that need deeper insights and customization.</div>
+              <div class="pricing-card__price">
+                <span class="pricing-card__amount" data-monthly="85" data-annual="68">$85</span>
+                <span class="pricing-card__period">per user / month</span>
+              </div>
+              <ul class="pricing-card__features" role="list">
+                <li><i data-lucide="check"></i> Everything in Core, plus:</li>
+                <li><i data-lucide="check"></i> 1-Hour Onboarding Call</li>
+                <li><i data-lucide="check"></i> Custom Domains</li>
+                <li><i data-lucide="check"></i> Beta Feature Access</li>
+                <li><i data-lucide="check"></i> NPS Scoring</li>
+                <li><i data-lucide="check"></i> Customer Feedback Collection</li>
+                <li><i data-lucide="check"></i> Third-Party Integrations</li>
+                <li><i data-lucide="check"></i> Priority Support</li>
+              </ul>
+              <a href="https://app.ellocharlie.com" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Start Free Trial</a>
+            </div>
+
+            <!-- Enterprise -->
+            <div class="pricing-card">
+              <div class="pricing-card__name">Enterprise</div>
+              <div class="pricing-card__desc">Custom plans for larger teams. Coming soon.</div>
+              <div class="pricing-card__price">
+                <span class="pricing-card__amount">Custom</span>
+                <span class="pricing-card__period">contact us</span>
+              </div>
+              <ul class="pricing-card__features" role="list">
+                <li><i data-lucide="check"></i> Everything in Plus</li>
+                <li><i data-lucide="check"></i> Dedicated Account Manager</li>
+                <li><i data-lucide="check"></i> Custom SLA</li>
+                <li><i data-lucide="check"></i> SSO & Advanced Security</li>
+                <li><i data-lucide="check"></i> Custom Onboarding</li>
+                <li><i data-lucide="check"></i> Volume Discounts</li>
+              </ul>
+              <a href="mailto:nicholas@ellocharlie.com" class="btn btn--secondary btn--lg">Contact Sales</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section--tight">
+        <div class="container">
+          <div style="text-align:center;margin-bottom:var(--space-8);">
+            <h2 class="section__title" style="margin-inline:auto;">Frequently asked questions</h2>
+          </div>
+          <div class="faq">
+            <div class="faq__item">
+              <button class="faq__question">Is there really no contract? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              <div class="faq__answer"><p>None. You can upgrade, downgrade, or cancel your subscription at any time. We believe you should stay because the product works, not because of fine print.</p></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__question">What happens after the free trial? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              <div class="faq__answer"><p>After 7 days, you'll be asked to select a plan. No credit card is required to start. If you choose not to continue, your data is retained for 30 days so you can come back anytime.</p></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__question">Do all plans include API access? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              <div class="faq__answer"><p>Yes. Every plan includes full REST API access, webhook support, and our MCP server for AI integrations. We want developers to build on ellocharlie, not around it.</p></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__question">Can I migrate from another CRM? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              <div class="faq__answer"><p>We're building migration tools for common CRMs. In the meantime, our API makes it straightforward to import your existing data, and Plus plan customers get a 1-hour onboarding call to help.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="section">
+        <div class="container">
+          <div class="cta-section fade-in">
+            <h2 class="cta-section__title">Start building better relationships</h2>
+            <p class="cta-section__desc">7-day free trial. No credit card required. Cancel anytime.</p>
+            <a href="https://app.ellocharlie.com" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">Start Free Trial</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
   </main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="site-footer">
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer" id="siteFooter">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#" class="logo" aria-label="ellocharlie home">
-            <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-              <rect x="2" y="2" width="28" height="28" rx="8" stroke="currentColor" stroke-width="2.5"/>
-              <path d="M9 12.5h6.5M9 16h10M9 19.5h6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="22" cy="16" r="3.5" stroke="currentColor" stroke-width="2"/>
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#home" class="footer__brand-logo" data-page="home">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <rect width="32" height="32" rx="8" fill="currentColor" opacity="0.1"/>
+              <path d="M8 16C8 11.6 11.6 8 16 8s8 3.6 8 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M12 16c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="16" cy="16" r="1.5" fill="currentColor"/>
+              <path d="M16 18v6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
             </svg>
-            <span class="logo-text" style="font-size: var(--text-sm);">ellocharlie</span>
+            ellocharlie
           </a>
-          <p>One connected system for your entire customer journey.</p>
+          <p class="footer__brand-desc">CRM built for startups. One connected system for your entire customer journey.</p>
         </div>
-        <div class="footer-col">
-          <h4>Product</h4>
-          <ul role="list">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="https://www.ellocharlie.com/demo" target="_blank" rel="noopener noreferrer">Get Free Demo</a></li>
+        <div>
+          <div class="footer__col-title">Product</div>
+          <ul class="footer__links" role="list">
+            <li><a href="#features" data-page="features">Features</a></li>
+            <li><a href="#integrations" data-page="integrations">Integrations</a></li>
+            <li><a href="#pricing" data-page="pricing">Pricing</a></li>
+            <li><a href="https://app.ellocharlie.com" target="_blank" rel="noopener noreferrer">Login</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul role="list">
-            <li><a href="https://app.ellocharlie.com/login" target="_blank" rel="noopener noreferrer">Login</a></li>
-            <li><a href="https://app.ellocharlie.com/register" target="_blank" rel="noopener noreferrer">Sign Up</a></li>
-            <li><a href="https://app.ellocharlie.com/developers" target="_blank" rel="noopener noreferrer">Developers</a></li>
-            <li><a href="mailto:hello@ellocharlie.com">hello@ellocharlie.com</a></li>
+        <div>
+          <div class="footer__col-title">Company</div>
+          <ul class="footer__links" role="list">
+            <li><a href="#about" data-page="about">About</a></li>
+            <li><a href="mailto:nicholas@ellocharlie.com">Contact</a></li>
+            <li><a href="https://linkedin.com/in/nicholasdr" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           </ul>
         </div>
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <ul role="list">
-            <li><a href="https://www.ellocharlie.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
-            <li><a href="https://www.ellocharlie.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+        <div>
+          <div class="footer__col-title">Developers</div>
+          <ul class="footer__links" role="list">
+            <li><a href="#integrations" data-page="integrations">API Docs</a></li>
+            <li><a href="#integrations" data-page="integrations">MCP Server</a></li>
+            <li><a href="#integrations" data-page="integrations">Webhooks</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 ellocharlie. All rights reserved.</p>
-        <p>Founded by <a href="https://linkedin.com/in/nicholasdr" target="_blank" rel="noopener noreferrer">Nicholas Richards</a>.</p>
+      <div class="footer__bottom">
+        <span class="footer__copyright">&copy; 2026 ellocharlie. All rights reserved.</span>
+        <div style="display:flex;gap:var(--space-4);">
+          <a href="#" style="font-size:var(--text-xs);color:var(--color-text-faint);text-decoration:none;">Privacy</a>
+          <a href="#" style="font-size:var(--text-xs);color:var(--color-text-faint);text-decoration:none;">Terms</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script src="./app.js" defer></script>
+  <script src="./app.js"></script>
 </body>
 </html>
