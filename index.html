@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ellocharlie — One system for your entire customer journey</title>
+  <meta name="description" content="One connected system for your entire customer journey. CRM, helpdesk, onboarding, docs, and more — simple enough to start using today.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ellocharlie — Building SaaS? Growth doesn't have to be so hard.">
+  <meta property="og:description" content="One connected system for your entire customer journey. Simple enough to start using today.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ellocharlie.com">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+
+  <!-- Fonts: Cabinet Grotesk (display) + General Sans (body) from Fontshare -->
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo" aria-label="ellocharlie home">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect x="2" y="2" width="28" height="28" rx="8" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M9 12.5h6.5M9 16h10M9 19.5h6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="22" cy="16" r="3.5" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <span class="logo-text">ellocharlie</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://app.ellocharlie.com" target="_blank" rel="noopener noreferrer">Login</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="https://app.ellocharlie.com/signup" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm header-cta">Sign Up</a>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://app.ellocharlie.com" target="_blank" rel="noopener noreferrer">Login</a>
+      <a href="https://app.ellocharlie.com/signup" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="margin-top: var(--space-4);">Start Free Trial</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero section" id="hero">
+      <div class="container hero-inner">
+        <div class="hero-badge reveal">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Now in public beta
+        </div>
+        <h1 class="reveal">Building SaaS? Growth doesn't have to be so hard.</h1>
+        <p class="reveal">One connected system for your entire customer journey. Simple enough to start using today.</p>
+        <div class="hero-actions reveal">
+          <a href="https://app.ellocharlie.com/signup" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Start Free Trial</a>
+          <a href="#features" class="btn btn--ghost">See Features</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section class="problem section" id="problem">
+      <div class="container">
+        <p class="section-label reveal">The reality</p>
+        <h2 class="section-title reveal" style="max-width:580px;">Your tools don't talk to each other.</h2>
+        <div class="problem-grid" style="margin-top: var(--space-10);">
+          <div class="problem-card reveal">
+            <p>It's 2AM and your biggest customer is threatening to churn. The full story is scattered across your CRM, support tickets, Slack threads and someone's Google doc.</p>
+          </div>
+          <div class="problem-card reveal">
+            <p>Your CRM goes dark after the sale. Your helpdesk only catches fires. Your project tool doesn't talk to either of them.</p>
+          </div>
+          <div class="problem-card reveal">
+            <p>This is how churn happens. ellocharlie helps solve this.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="section" id="features">
+      <div class="container">
+        <p class="section-label reveal">Features</p>
+        <h2 class="section-title reveal">Everything you need, nothing you don't.</h2>
+        <p class="section-subtitle reveal" style="margin-bottom: var(--space-10);">One platform replaces your CRM, helpdesk, project tracker, docs portal, and status page.</p>
+
+        <div class="features-grid reveal-stagger">
+          <!-- 1: Lead Forms — wide -->
+          <div class="feature-card feature-card--wide reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
+            </div>
+            <h3>Lead Forms</h3>
+            <p>Create lead forms for your website so people can get in touch automatically. No code, no third-party tools.</p>
+          </div>
+
+          <!-- 2: Schedule Meetings -->
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="12" cy="16" r="2"/></svg>
+            </div>
+            <h3>Schedule Meetings</h3>
+            <p>Give prospects an easy way to schedule meetings to learn more.</p>
+          </div>
+
+          <!-- 3: Track Leads & Deals — wide -->
+          <div class="feature-card feature-card--wide reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h3>Track Leads &amp; Deals</h3>
+            <p>Capture leads and qualify deals through your pipeline. Smart notifications keep deals moving forward.</p>
+          </div>
+
+          <!-- 4: Onboarding & Projects -->
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <h3>Onboarding &amp; Projects</h3>
+            <p>Create repeatable onboarding processes and custom projects with live tracking.</p>
+          </div>
+
+          <!-- 5: Documentation Portal -->
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h5"/></svg>
+            </div>
+            <h3>Documentation Portal</h3>
+            <p>Product documentation customers will actually use. Built-in live chat and AI search.</p>
+          </div>
+
+          <!-- 6: AI Assistant & Live Chat -->
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8c0 3.4 2.1 6.3 5 7.4V20h6v-2.6c2.9-1.1 5-4 5-7.4a8 8 0 0 0-8-8z"/><line x1="10" y1="22" x2="14" y2="22"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+            </div>
+            <h3>AI Assistant &amp; Live Chat</h3>
+            <p>Instant answers with AI-powered docs. Quick reply shortcuts for faster responses.</p>
+          </div>
+
+          <!-- 7: Helpdesk & Ticketing — wide -->
+          <div class="feature-card feature-card--wide reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="13" y2="13"/></svg>
+            </div>
+            <h3>Helpdesk &amp; Ticketing</h3>
+            <p>Live chat widget for tickets. Track progress in real-time. Every conversation, every resolution — in one place.</p>
+          </div>
+
+          <!-- 8: Status Page & Updates -->
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3>Status Page &amp; Updates</h3>
+            <p>Keep customers informed. Publish status updates with automatic notifications.</p>
+          </div>
+
+          <!-- 9: Automate Common Tasks -->
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+            </div>
+            <h3>Automate Common Tasks</h3>
+            <p>Trigger actions, update records, route tasks automatically.</p>
+          </div>
+
+          <!-- 10: Focus On Delivery -->
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <h3>Focus On Delivery</h3>
+            <p>Manage response and resolution times. Keep your team prioritized on what matters.</p>
+          </div>
+
+          <!-- 11: Easily Customizable — wide -->
+          <div class="feature-card feature-card--wide reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </div>
+            <h3>Easily Customizable</h3>
+            <p>Add custom fields to leads, deals, companies, contacts, and tickets. Make ellocharlie work the way you work.</p>
+          </div>
+
+          <!-- 12: Metrics & Reporting -->
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <h3>Metrics &amp; Reporting</h3>
+            <p>Centralize metrics. Pull reports for your team and investors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="pricing section" id="pricing">
+      <div class="container">
+        <p class="section-label reveal">Pricing</p>
+        <h2 class="section-title reveal">Simple, transparent pricing.</h2>
+        <p class="section-subtitle reveal" style="margin-bottom: var(--space-10);">No contracts. 7-day free trial. Cancel anytime.</p>
+
+        <div class="pricing-grid">
+          <!-- Core -->
+          <div class="pricing-card reveal">
+            <p class="pricing-plan">Core</p>
+            <p class="pricing-price">$45 <span>/seat/mo</span></p>
+            <p class="pricing-desc">Everything you need to manage customers end-to-end.</p>
+            <ul class="pricing-features" role="list">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                CRM &amp; Sales
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Customer &amp; Project Management
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Live Chat &amp; Helpdesk
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Ticket Tracker
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Status &amp; Updates Page
+              </li>
+            </ul>
+            <a href="https://app.ellocharlie.com/signup" target="_blank" rel="noopener noreferrer" class="btn btn--ghost" style="width:100%;">Start Free Trial</a>
+          </div>
+
+          <!-- Plus -->
+          <div class="pricing-card pricing-card--featured reveal">
+            <span class="pricing-badge">Most Popular</span>
+            <p class="pricing-plan">Plus</p>
+            <p class="pricing-price">$70 <span>/seat/mo</span></p>
+            <p class="pricing-desc">For teams that need custom branding and priority support.</p>
+            <ul class="pricing-features" role="list">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Everything in Core
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Custom Domains
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                1-Hour Onboarding Call
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Beta Features Access
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Priority Support
+              </li>
+            </ul>
+            <a href="https://app.ellocharlie.com/signup" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="width:100%;">Start Free Trial</a>
+          </div>
+        </div>
+
+        <p class="pricing-note reveal">No contracts &middot; 7-day free trial &middot; Cancel anytime</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <p class="section-label reveal">FAQ</p>
+        <h2 class="section-title reveal" style="margin-bottom: var(--space-10);">Common questions.</h2>
+
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false">
+              Can I customize branding?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. Documentation, status and project portals can all use your branding and colors for a seamless experience.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false">
+              What if I need help?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>We offer documentation, video guides, and in-app chat. You can also schedule a call for advanced customization and setup help.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false">
+              Can I use our company domain?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes, the Plus plan includes custom domains so your portals live on your own domain.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false">
+              Can we cancel anytime?
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes, there are no long-term contracts. You can cancel your subscription at any time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA BAND ============ -->
+    <section class="cta-band section">
+      <div class="container">
+        <h2 class="reveal">Ready to unify your customer journey?</h2>
+        <p class="reveal">Start your 7-day free trial. No credit card required.</p>
+        <div class="hero-actions reveal">
+          <a href="https://app.ellocharlie.com/signup" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Start Free Trial</a>
+          <a href="mailto:hello@ellocharlie.com" class="btn btn--ghost">Contact Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo" aria-label="ellocharlie home">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <rect x="2" y="2" width="28" height="28" rx="8" stroke="currentColor" stroke-width="2.5"/>
+              <path d="M9 12.5h6.5M9 16h10M9 19.5h6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="22" cy="16" r="3.5" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span class="logo-text" style="font-size: var(--text-base);">ellocharlie</span>
+          </a>
+          <p>One connected system for your entire customer journey.</p>
+          <p style="margin-top: var(--space-1);">Founded by Nicholas Richards.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul role="list">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul role="list">
+            <li><a href="https://app.ellocharlie.com" target="_blank" rel="noopener noreferrer">Login</a></li>
+            <li><a href="https://app.ellocharlie.com/signup" target="_blank" rel="noopener noreferrer">Sign Up</a></li>
+            <li><a href="mailto:hello@ellocharlie.com">hello@ellocharlie.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ellocharlie. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
